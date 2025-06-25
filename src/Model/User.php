@@ -29,7 +29,39 @@ class User extends Model{
         return !empty($row) ? true : false;
     }
 
-    public function Login(){
+    // public function Login($username,$password){
+    //   $query= " select * from $this->tableName where username = :username";
+    //   $this->query($query);
+    //   $this->bind(':username',$username);
+    //    $row = $this->single();
+   
+    //    if($row){
+    //         $hash_password= $row->password;
+    //         if(password_verify($password,$hash_password)){
+    //             return $row ;
+    //         }else{
+    //             return false  ;
+    //         }
+    //    }
+    // }
+
+        public function Login($username,$password){
+
+      $query= " select * from $this->tableName where username = :username";
+      $this->query($query);
+      $this->bind(':username',$username);
+       $row = $this->single();
+
+       var_dump($row);
+   
+       if($row){
+        $hash_password= $row->password;
+        if(password_verify($password,$hash_password)){
+            return $row ;
+        }else{
+            return false  ;
+        }
+       }
 
     }
 }

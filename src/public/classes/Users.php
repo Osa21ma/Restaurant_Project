@@ -1,4 +1,6 @@
 <?php
+
+use os\Test\public\classes\DBConnection;
 require_once('../config.php');
 Class Users extends DBConnection {
 	private $settings;

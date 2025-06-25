@@ -1,50 +1,44 @@
 <?php 
 
 namespace os\Test\Controller;
+use os\Test\View;
 use os\Test\Model\User;
 use os\Test\public\Request;
-use os\Test\View;
+use os\Test\public\Session;
+
 
 class Login {
 
   private $userModel;
+  private $session ;
 
-  public function __construct(){
-    $this->userModel = new User();
+  public function __construct() {
+    $this->userModel=new User ;
+    $this->session= new Session() ;
   }
-
   public function showLogin(){
     View::Render('login.php');
   }
    
-  public function handellogin(){
-  
-    $userData = filter_input_array(INPUT_POST);
+  public function handelLogin(){
+    $userData=filter_input_array(INPUT_POST);
+    // var_dump($userData);
+    $loginUser =  $this->userModel->Login($userData['username'],$userData['password']);
 
-    if( $this->userModel->findByUserName($userData['username'])){
-      throw new \Exception("Username Already Exists");
       
-    }
-
-            $passwordHash= password_hash($userData['password'], PASSWORD_BCRYPT);
-
-        $user =[
-                'firstname'=>$userData['firstname'],
-                'lastname'=>$userData['lastname'],
-                'middlename'=>$userData['middlename'],
-                'username'=>$userData['username'],
-                'password'=>$passwordHash,
-
-
-        ];
-
-      if($this->userModel->Register($user)){
-        Request::redirect('login/showLogin');
+      if($loginUser){
+        $this->createUserSession($loginUser);
+        Request::redirect('home/index');
       }else{
 
-        Request::redirect('register/showRegister');
-          
+         Request::redirect('login/showLogin');
+         
       } 
+    
+  }
+  public function createUserSession($user){
+    $this->session->setSession('user_id',$user->id);
+    $this->session->setSession('username',$user->username);
   }
 
 }
