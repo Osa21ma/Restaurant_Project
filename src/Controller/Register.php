@@ -26,14 +26,14 @@ class Register {
       
     }
 
-            $passwordHash= password_hash($userData['password'], PASSWORD_BCRYPT);
+            //$passwordHash= password_hash($userData['password'], PASSWORD_BCRYPT);
 
         $user =[
                 'firstname'=>$userData['firstname'],
                 'lastname'=>$userData['lastname'],
                 'middlename'=>$userData['middlename'],
                 'username'=>$userData['username'],
-                'password'=>$passwordHash,
+                'password'=>$userData['password'],
 
 
         ];

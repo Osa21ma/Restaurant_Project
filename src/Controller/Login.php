@@ -25,7 +25,6 @@ class Login {
     // var_dump($userData);
     $loginUser =  $this->userModel->Login($userData['username'],$userData['password']);
 
-      
       if($loginUser){
         $this->createUserSession($loginUser);
         Request::redirect('home/index');
