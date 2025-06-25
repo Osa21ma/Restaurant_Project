@@ -1,0 +1,10 @@
+{
+    "name": "os/test",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "os\\Test\\": "src/"
+        }
+    },
+    "require": {}
+}
