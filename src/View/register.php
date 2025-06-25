@@ -8,7 +8,7 @@
             </div>
 
             <div class="card-body">
-                <form method="post" action="">
+                <form method="post" action="<?php echo base_url?>register/handelRegister">
                     <div class="form-group">
                         <label for="name">Name<sub>*</sub></label>
                         <input type="text" name="firstname" class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>" >
