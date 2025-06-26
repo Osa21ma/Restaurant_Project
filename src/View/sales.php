@@ -313,14 +313,8 @@
                             // location.reload()
                             setTimeout(() => {
                                 
-                                var nw = window.open(_base_url_ + ``, '_blank', "width=" + ($(window).width() * .8) + ",left=" + ($(window).width() * .1) + ",height=" + ($(window).height() * .8) + ",top=" + ($(window).height() * .1))
-                                setTimeout(() => {
-                                    nw.print()
-                                    setTimeout(() => {
-                                        nw.close()
-                                        location.reload()
-                                    }, 300);
-                                }, 200);
+                                var nw = window.open(_base_url_ + `Sales/showReceipt/${resp.order_id}`, '_blank', "width=" + ($(window).width() * .8) + ",left=" + ($(window).width() * .1) + ",height=" + ($(window).height() * .8) + ",top=" + ($(window).height() * .1))
+                                
                             }, 200);
                         } else if (!!resp.msg) {
                             alert_toast(resp.msg, 'error')

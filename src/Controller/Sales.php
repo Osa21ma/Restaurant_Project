@@ -34,19 +34,19 @@ class Sales {
 
     }
 
-    // public function showReceipt($id){
-    //    $orderList = $this->order->getOrderList($id);
-    //    $orderItem = $this->order->getOrderItem($id);
-    //    $processdBy  =$this->session->getSession('username') ;
-    //    View::Render('receipt.php', [
-    //     'orderList' => $orderList,
-    //     'orderItem' => $orderItem,
-    //     'processdBy' => $processdBy
-    // ]);
+    public function showReceipt($id){
+       $orderList = $this->order->getOrderList($id);
+       $orderItem = $this->order->getOrderItem($id);
+       $processdBy  =$this->session->getSession('username') ;
+       View::Render('receipt.php', [
+        'orderList' => $orderList,
+        'orderItem' => $orderItem,
+        'processdBy' => $processdBy
+    ]);
     
-    // }
+    }
 
-    // public function deleteOrder($id){
-    //    echo  $this->order->rollback($id) ;
-    // }
+    public function deleteOrder($id){
+       echo  $this->order->rollback($id) ;
+    }
 }
