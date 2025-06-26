@@ -136,11 +136,11 @@ class Order extends Model {
         return substr($code, -5);
     }
 
-    // public function getOrders(){
-    //     $query = "SELECT * FROM $this->tableName order by date_created desc" ;
-    //     $this->query( $query) ;
-    //     return $this->resultSet();
-    // }
+    public function getOrders(){
+        $query = "SELECT * FROM $this->tableName order by date_created desc" ;
+        $this->query( $query) ;
+        return $this->resultSet();
+    }
     public function getOrderList($id){
         $query = "SELECT * FROM $this->tableName where id = $id" ;
         $this->query($query) ;

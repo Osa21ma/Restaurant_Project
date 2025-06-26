@@ -32,6 +32,7 @@
 							<col width="10%">
 						</colgroup>
 						<thead>
+							
 							<tr>
 								<th>#</th>
 								<th>Date Created</th>
@@ -43,23 +44,28 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php 
+							$i=1;
+							foreach($data['orders'] as $order)
+							{?>
 							
 								<tr>
-									<td class="text-center"></td>
-									<td></td>
+									<td class="text-center"><?=$i++;?></td>
+									<td><?= $order->date_created ?></td>
 									<td class=""><?= $order->code ?></td>
 									<td class=""><?= $order->queue ?></td>
-									<td class="text-right"></td>
+									<td class="text-right"><?= $order->total_amount ?></td>
 									<td class="text-center">
-									
+									<?= $order->status ?>
 									</td>
 									<td class="text-center">
 										<div class="btn-group btn-group-sm">
-											<a class="btn btn-flat btn-sm btn-light bg-gradient-light border view_receipt" href="javascript:void(0)" data-id="" title="Print Receipt"><small><span class="fa fa-receipt"></span></small></a>
-											<a class="btn btn-flat btn-sm btn-danger bg-gradient-danger delete_data" href="javascript:void(0)" data-id="" title="Delete Order"><small><span class="fa fa-trash"></span></small></a>
+											<a class="btn btn-flat btn-sm btn-light bg-gradient-light border view_receipt" href="javascript:void(0)" data-id="<?= $order->id?>" title="Print Receipt"><small><span class="fa fa-receipt"></span></small></a>
+											<a class="btn btn-flat btn-sm btn-danger bg-gradient-danger delete_data" href="javascript:void(0)" data-id="<?= $order->id?>" title="Delete Order"><small><span class="fa fa-trash"></span></small></a>
 										</div>
 									</td>
 								</tr>
+								<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -80,26 +86,16 @@
 						end_loader();
 					},
 					success: function(resp) {
-						if (typeof resp == 'object' && resp.status == 'success') {
-							alert_toast(resp.msg, 'success')
+						
 							location.reload();
-						} else {
-							console.log(resp)
-							alert_toast("An error occured.", 'error');
-							end_loader();
-						}
+						
+						
 					}
 				})
 			})
 			$('.view_receipt').click(function() {
-				var nw = window.open(_base_url_ +  '_blank', "width=" + ($(window).width() * .8) + ",left=" + ($(window).width() * .1) + ",height=" + ($(window).height() * .8) + ",top=" + ($(window).height() * .1))
-				setTimeout(() => {
-					nw.print()
-					setTimeout(() => {
-						nw.close()
-						location.reload()
-					}, 300);
-				}, 200);
+				var nw = window.open(_base_url_ + `sales/showReceipt/${$(this).attr('data-id')}` , '_blank', "width=" + ($(window).width() * .8) + ",left=" + ($(window).width() * .1) + ",height=" + ($(window).height() * .8) + ",top=" + ($(window).height() * .1))
+				
 			})
 			$('.table').dataTable({
 				columnDefs: [{
