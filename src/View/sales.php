@@ -296,7 +296,7 @@
                 }
                 start_loader()
                 $.ajax({
-                    url: _base_url_ + "",
+                    url: _base_url_ + "sales/makeorder",
                     method: 'POST',
                     data: $(this).serialize(),
                     dataType: 'json',

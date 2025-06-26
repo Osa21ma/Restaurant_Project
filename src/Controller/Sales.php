@@ -18,7 +18,7 @@ class Sales {
     public function __construct(){
         $this->category= new Category();
         $this->menu = new Menu();
-        // $this->order =new Order();
+        $this->order =new Order();
         $this->session =new Session() ;
 
     }
@@ -28,25 +28,25 @@ class Sales {
         View::Render('sales.php',['allcategories'=>$allCategories,'allMenues'=>$allMenues]);
     }
 
-//     public function makeorder(){
-//         $orderData = filter_input_array(INPUT_POST);
-//       echo  $this->order->placeOrder($orderData);
+    public function makeorder(){
+        $orderData = filter_input_array(INPUT_POST);
+      echo  $this->order->placeOrder($orderData);
 
-//     }
+    }
 
-//     public function showReceipt($id){
-//        $orderList = $this->order->getOrderList($id);
-//        $orderItem = $this->order->getOrderItem($id);
-//        $processdBy  =$this->session->getSession('username') ;
-//        View::Render('receipt.php', [
-//         'orderList' => $orderList,
-//         'orderItem' => $orderItem,
-//         'processdBy' => $processdBy
-//     ]);
+    // public function showReceipt($id){
+    //    $orderList = $this->order->getOrderList($id);
+    //    $orderItem = $this->order->getOrderItem($id);
+    //    $processdBy  =$this->session->getSession('username') ;
+    //    View::Render('receipt.php', [
+    //     'orderList' => $orderList,
+    //     'orderItem' => $orderItem,
+    //     'processdBy' => $processdBy
+    // ]);
     
-//     }
+    // }
 
-//     public function deleteOrder($id){
-//        echo  $this->order->rollback($id) ;
-//     }
+    // public function deleteOrder($id){
+    //    echo  $this->order->rollback($id) ;
+    // }
 }

@@ -92,7 +92,7 @@
 				})
 			})
 			$('.view_receipt').click(function() {
-				var nw = window.open(_base_url_ + , '_blank', "width=" + ($(window).width() * .8) + ",left=" + ($(window).width() * .1) + ",height=" + ($(window).height() * .8) + ",top=" + ($(window).height() * .1))
+				var nw = window.open(_base_url_ +  '_blank', "width=" + ($(window).width() * .8) + ",left=" + ($(window).width() * .1) + ",height=" + ($(window).height() * .8) + ",top=" + ($(window).height() * .1))
 				setTimeout(() => {
 					nw.print()
 					setTimeout(() => {
