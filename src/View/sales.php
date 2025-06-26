@@ -87,23 +87,26 @@
                                         <fieldset>
                                             <legend>Categories</legend>
                                             <div id="cat-list" class="py-1">
-                                              
-                                                <button class="btn btn-default btn-xs rounded-pill px-2 cat_btn mx-3 col-lg-3 col-md-4 col-sm-6 col-xs-10
-                                                  " type="button" data-id=''></button>
-                                               
+                                                <?php foreach($data['allcategories'] as $category){ ?>
+                                                <button class="btn btn-default btn-xs rounded-pill
+                                                 px-2 cat_btn mx-3 col-lg-3 col-md-4 col-sm-6 col-xs-10
+                                                  " type="button" data-id='<?= $category->id ?>'><?= $category->name?></button>
+                                               <?php } ?>
                                             </div>
                                         </fieldset>
                                         <fieldset>
                                             <legend>Menu</legend>
                                             <div id="item-list" class="py-1 overflow-auto">
                                                 <div class="row row-cols-xl-3 row-cols-md-2 row-cols-sm-1 gy-2 gx-2">
-                                                   
-                                                    <div class="col  menu-item" data-cat-id=''>
-                                                        <button class="btn btn-default btn-block btn-xs rounded-pill px-2 bg-gradient-light border my item-btn" type="button" data-id=''>
-                                                            <p class="m-0 truncate-1"></p>
+                                                   <?php foreach($data['allMenues'] as $menu){ ?>
+                                                    <div class="col <?php echo  isset($menu) && $menu==$menu->category_id ? "" : "d-none" ?>
+                                                      menu-item" data-cat-id='<?= $menu->category_id ?>'>
+                                                        <button class="btn btn-default btn-block btn-xs rounded-pill px-2 bg-gradient-light border my item-btn" type="button"
+                                                         data-id='<?= $menu->id?>' data-price="<?= $menu->price ?>">
+                                                            <p class="m-0 truncate-1"><?= $menu->code .'.'.$menu->name  ?></p>
                                                         </button>
                                                     </div>
-        
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </fieldset>
