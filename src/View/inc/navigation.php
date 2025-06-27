@@ -62,7 +62,7 @@
                     </li>
                     <li class="nav-header">Master List</li>
                     <li class="nav-item dropdown">
-                      <a href="./index.php?category/allCategories" class="nav-link nav-categories">
+                      <a href="./index.php?category/getCategory" class="nav-link nav-categories">
                         <i class="nav-icon fas fa-th-list"></i>
                         <p>
                           Category List

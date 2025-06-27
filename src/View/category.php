@@ -44,20 +44,24 @@
                             </tr>
                         </thead>
                         <tbody>
-
+                              <?php 
+                              $i=1;
+                              foreach($data['categories'] as $category) { ?>
                                 <tr>
-                                    <td class="text-center"></td>
-                                    <td></td>
-                                    <td class=""></td>
+                                    <td class="text-center"><?= $i++ ?></td>
+                                    <td><?= $category->date_created ?></td>
+                                    <td class=""><?= $category->name?></td>
                                     <td class="">
-                                        <p class="mb-0 truncate-1"></p>
+                                        <p class="mb-0 truncate-1"><?= $category->description?></p>
                                     </td>
                                     <td class="text-center">
+
+                                    <?php if($category->status == 1){ ?>
                                       
                                             <span class="badge badge-success px-3 rounded-pill">Active</span>
-                                     
+                                     <?php }else{ ?>
                                             <span class="badge badge-danger px-3 rounded-pill">Inactive</span>
-                                 
+                                      <?php } ?>
                                     </td>
                                     <td align="center">
                                         <button type="button" class="btn btn-flat p-1 btn-default btn-sm dropdown-toggle dropdown-icon" data-toggle="dropdown">
@@ -65,42 +69,39 @@
                                             <span class="sr-only">Toggle Dropdown</span>
                                         </button>
                                         <div class="dropdown-menu" role="menu">
-                                            <a class="dropdown-item view-data" href="javascript:void(0)" data-id=""><span class="fa fa-eye text-dark"></span> View</a>
+                                            <a class="dropdown-item view-data" href="javascript:void(0)" data-id="<?= $category->id ?>"><span class="fa fa-eye text-dark"></span> View</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item edit-data" href="javascript:void(0)" data-id=""><span class="fa fa-edit text-primary"></span> Edit</a>
+                                            <a class="dropdown-item edit-data" href="javascript:void(0)" data-id="<?= $category->id ?>"><span class="fa fa-edit text-primary"></span> Edit</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item delete_data" href="javascript:void(0)" data-id=""><span class="fa fa-trash text-danger"></span> Delete</a>
+                                            <a class="dropdown-item delete_data" href="javascript:void(0)" data-id="<?= $category->id ?>"><span class="fa fa-trash text-danger"></span> Delete</a>
                                         </div>
                                     </td>
                                 </tr>
+                                <?php } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <?php require_once ('inc/alert.php') ?>
     <script>
         $(document).ready(function() {
             $('.delete_data').click(function() {
                 _conf("Are you sure to delete this Category permanently?", "delete_category", [$(this).attr('data-id')])
             })
             $('#create_new').click(function() {
-                uni_modal("<i class='far fa-plus-square'></i> Add New Category ", "categories/manage_category.php")
+                uni_modal("<i class='far fa-plus-square'></i> Add New Category ",_base_url_ +"category/makeCategory")
             })
             $('.edit-data').click(function() {
-                uni_modal("<i class='fa fa-edit'></i> Add New Category ", "categories/manage_category.php?id=" + $(this).attr('data-id'))
+                uni_modal("<i class='fa fa-edit'></i> Edit Category ", _base_url_ +"category/editcategory/" + $(this).attr('data-id'))
             })
             $('.view-data').click(function() {
                 const categoryId = $(this).attr('data-id');
                 setTimeout(() => {
                     var nw = window.open(_base_url_ + `category/viewCategory/${categoryId}`, '_blank', "width=" + ($(window).width() * .8) + ",left=" + ($(window).width() * .1) + ",height=" + ($(window).height() * .8) + ",top=" + ($(window).height() * .1))
-                    setTimeout(() => {
-                        nw.print()
-                        setTimeout(() => {
-                            nw.close()
-                            location.reload()
-                        }, 300);
-                    }, 200);
+                   
+                   
                 }, 200);
             })
             $('.table').dataTable({
@@ -116,7 +117,7 @@
         function delete_category($id) {
             start_loader();
             $.ajax({
-                url: _base_url_ + "classes/Master.php?f=delete_category",
+                url: _base_url_ + `category/deleteCategory/${$id}`,
                 method: "POST",
                 data: {
                     id: $id
@@ -128,12 +129,10 @@
                     end_loader();
                 },
                 success: function(resp) {
-                    if (typeof resp == 'object' && resp.status == 'success') {
+                   
                         location.reload();
-                    } else {
-                        alert_toast("An error occured.", 'error');
-                        end_loader();
-                    }
+                   
+                   
                 }
             })
         }
