@@ -37,11 +37,11 @@ class Category {
        $category= $this->category->getCategoryDetail($id);
         View::Render('editCategory.php',['category'=>$category]);
     }
-    // public function updateCategory($id){
-    //     $categoryData =filter_input_array(INPUT_POST) ;
-    //     echo $category= $this->category->update($categoryData,$id);
+    public function updateCategory($id){
+        $categoryData =filter_input_array(INPUT_POST) ;
+        echo  $this->category->update($categoryData,$id);
       
-    // }
+    }
 
     // public function deleteCategory($id){
     //   echo $this->category->delete($id);

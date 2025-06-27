@@ -57,34 +57,34 @@ class Category extends Model{
         return $this->single();
     }
 
-    // public function update($categoryData,$id){
-    //     if (empty($categoryData['name']) || empty($categoryData['description']) || !isset($categoryData['status'])) {
-    //         return json_encode([
-    //             'status' => 'fail',
-    //             'msg' => 'All fields are required'
-    //         ]);
-    //     }
-    //     $query = "UPDATE  $this->tableName SET name= :name , description= :description , status =:status WHERE id =$id" ;
-    //     $this->query($query);
-    //     $this->bind(':name' , $categoryData['name']);
-    //     $this->bind(':description' , $categoryData['description']);
-    //     $this->bind(':status' , $categoryData['status']);
+    public function update($categoryData,$id){
+        if (empty($categoryData['name']) || empty($categoryData['description']) || !isset($categoryData['status'])) {
+            return json_encode([
+                'status' => 'fail',
+                'msg' => 'All fields are required'
+            ]);
+        }
+        $query = "UPDATE  $this->tableName SET name= :name , description= :description , status =:status WHERE id =$id" ;
+        $this->query($query);
+        $this->bind(':name' , $categoryData['name']);
+        $this->bind(':description' , $categoryData['description']);
+        $this->bind(':status' , $categoryData['status']);
      
-    //     if($this->execute()){
-    //         return json_encode([
-    //             'status'=>'success',
-    //             'msg'=>'category has been UPDATE',
-    //         ]);
+        if($this->execute()){
+            return json_encode([
+                'status'=>'success',
+                'msg'=>'category has been UPDATE',
+            ]);
 
-    //     }else{
-    //         return json_encode([
-    //             'status'=>'fail',
-    //             'msg'=>'category has not been UPDATE',
-    //         ]);
+        }else{
+            return json_encode([
+                'status'=>'fail',
+                'msg'=>'category has not been UPDATE',
+            ]);
 
 
-    //     }
-    // }
+        }
+     }
 
     // public function delete($id){
     //     $query = "DELETE FROM $this->tableName where id =$id";
