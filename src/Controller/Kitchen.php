@@ -20,8 +20,8 @@ class Kitchen {
      echo $this->kitchen->getOrders($listed);
     }
 
-    // public function  serveOrder($id){
-    //    echo $this->kitchen->serve($id) ;
-    // }
+    public function  serveOrder($id){
+       echo $this->kitchen->serve($id) ;
+    }
 
 }

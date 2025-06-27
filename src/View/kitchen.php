@@ -75,6 +75,8 @@
             </div>
     </div>
     </noscript>
+        <?php require_once('inc/alert.php') ?>
+
     <script>
         function get_order() {
             listed = []
@@ -126,7 +128,7 @@
         function serve_order($id) {
             start_loader();
             $.ajax({
-                url: _base_url_ + "classes/Master.php?f=serve_order",
+                url: _base_url_ + `kitchen/serveOrder/${$id}`,
                 method: "POST",
                 data: {
                     id: $id

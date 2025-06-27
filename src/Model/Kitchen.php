@@ -35,23 +35,23 @@ class Kitchen extends Model {
     }
     
 
-    // public function serve($id) {
-    //     $query = "UPDATE order_list SET status = 1 WHERE id = :id";
-    //     $this->query($query);
-    //     $this->bind(':id', $id);
+    public function serve($id) {
+        $query = "UPDATE order_list SET status = 1 WHERE id = :id";
+        $this->query($query);
+        $this->bind(':id', $id);
     
-    //     if ($this->execute()) {
-    //         return json_encode([
-    //             'status' => 'success',
-    //             'msg' => 'Order has been served'
-    //         ]);
-    //     } else {
-    //         return json_encode([
-    //             'status' => 'error',
-    //             'msg' => 'Failed to serve the order'
-    //         ]);
-    //     }
-    // }
+        if ($this->execute()) {
+            return json_encode([
+                'status' => 'success',
+                'msg' => 'Order has been served'
+            ]);
+        } else {
+            return json_encode([
+                'status' => 'error',
+                'msg' => 'Failed to serve the order'
+            ]);
+        }
+    }
     
 
 
