@@ -51,11 +51,11 @@ class Category extends Model{
     }
   
 
-    // public function getCategoryDetail($id){
-    //     $query = "SELECT * from $this->tableName where id= $id" ;
-    //     $this->query($query);
-    //     return $this->single();
-    // }
+    public function getCategoryDetail($id){
+        $query = "SELECT * from $this->tableName where id= $id" ;
+        $this->query($query);
+        return $this->single();
+    }
 
     // public function update($categoryData,$id){
     //     if (empty($categoryData['name']) || empty($categoryData['description']) || !isset($categoryData['status'])) {

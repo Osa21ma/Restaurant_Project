@@ -27,11 +27,11 @@ class Category {
 
     }
 
-    // public function viewCategory($id){
+    public function viewCategory($id){
 
-    //    $category= $this->category->getCategoryDetail($id);
-    //     View::Render('viewCategory.php',['category'=>$category]);
-    // }
+       $category= $this->category->getCategoryDetail($id);
+        View::Render('viewCategory.php',['category'=>$category]);
+    }
     // public function editCategory($id){
 
     //    $category= $this->category->getCategoryDetail($id);
