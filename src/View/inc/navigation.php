@@ -53,7 +53,7 @@
                       </a>
                     </li> 
                     <li class="nav-item dropdown">
-                      <a href="./?page=kitchen" class="nav-link nav-kitchen">
+                      <a href="./index.php?kitchen/index" class="nav-link nav-kitchen">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                           Kitchen Side
