@@ -43,7 +43,7 @@ class Category {
       
     }
 
-    // public function deleteCategory($id){
-    //   echo $this->category->delete($id);
-    // }
+    public function deleteCategory($id){
+      echo $this->category->delete($id);
+    }
 }

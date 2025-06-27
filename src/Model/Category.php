@@ -86,10 +86,10 @@ class Category extends Model{
         }
      }
 
-    // public function delete($id){
-    //     $query = "DELETE FROM $this->tableName where id =$id";
-    //   $this->query($query);
-    //   return $this->execute();
-    // }
+    public function delete($id){
+        $query = "DELETE FROM $this->tableName where id =$id";
+      $this->query($query);
+      return $this->execute();
+    }
 
 }
