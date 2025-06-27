@@ -56,5 +56,5 @@ To run this project, you need the following:
 ### 1. Clone the repository
 
 ```bash
-github.com/m77mdabdo/SYSTEM_CASHIER-MVC
-cd restaurant-pos-system
+github.com/Osa21ma/Restaurant_Project
+
