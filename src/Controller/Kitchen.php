@@ -15,10 +15,10 @@ class Kitchen {
         View::Render('Kitchen.php') ;
     }
 
-    // public function getOrder(){
-    //     $listed = isset($_POST['listed']) ? $_POST['listed'] : [] ;
-    //  echo $this->kitchen->getOrders($listed);
-    // }
+    public function getOrder(){
+        $listed = isset($_POST['listed']) ? $_POST['listed'] : [] ;
+     echo $this->kitchen->getOrders($listed);
+    }
 
     // public function  serveOrder($id){
     //    echo $this->kitchen->serve($id) ;
