@@ -20,35 +20,35 @@ class Category extends Model{
         return $this->resultSet();
     }
 
-    // public function create($categoryData){
-    //     if (empty($categoryData['name']) || empty($categoryData['description']) || !isset($categoryData['status'])) {
-    //         return json_encode([
-    //             'status' => 'fail',
-    //             'msg' => 'All fields are required'
-    //         ]);
-    //     }
-    //     $query = "INSERT into $this->tableName (name , description , status )
-    //     values (:name , :description ,:status)" ;
-    //     $this->query($query);
-    //     $this->bind(':name' , $categoryData['name']);
-    //     $this->bind(':description' , $categoryData['description']);
-    //     $this->bind(':status' , $categoryData['status']);
+    public function create($categoryData){
+        if (empty($categoryData['name']) || empty($categoryData['description']) || !isset($categoryData['status'])) {
+            return json_encode([
+                'status' => 'fail',
+                'msg' => 'All fields are required'
+            ]);
+        }
+        $query = "INSERT into $this->tableName (name , description , status )
+        values (:name , :description ,:status)" ;
+        $this->query($query);
+        $this->bind(':name' , $categoryData['name']);
+        $this->bind(':description' , $categoryData['description']);
+        $this->bind(':status' , $categoryData['status']);
      
-    //     if($this->execute()){
-    //         return json_encode([
-    //             'status'=>'success',
-    //             'msg'=>'category has been created',
-    //         ]);
+        if($this->execute()){
+            return json_encode([
+                'status'=>'success',
+                'msg'=>'category has been created',
+            ]);
 
-    //     }else{
-    //         return json_encode([
-    //             'status'=>'fail',
-    //             'msg'=>'category has not been created',
-    //         ]);
+        }else{
+            return json_encode([
+                'status'=>'fail',
+                'msg'=>'category has not been created',
+            ]);
 
 
-    //     }
-    // }
+        }
+    }
   
 
     // public function getCategoryDetail($id){

@@ -21,11 +21,11 @@ class Category {
         View::Render('manage_category.php') ;
     }
   
-    // public function createCategory(){
-    //     $categoryData =filter_input_array(INPUT_POST) ;
-    //     echo  $this->category->create($categoryData);
+    public function createCategory(){
+        $categoryData =filter_input_array(INPUT_POST) ;
+        echo  $this->category->create($categoryData);
 
-    // }
+    }
 
     // public function viewCategory($id){
 
